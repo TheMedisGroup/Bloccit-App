@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   def index
-    @post = Post.all
-    @post.each_with_index do |post, index|
+    @posts = Post.all
+    @posts.each_with_index do |post, index|
       if index % 5 == 0
         post.title = "SPAM"
+      end
+    end
   end
 
   def show
@@ -20,18 +22,16 @@ class PostsController < ApplicationController
     @post.body = params[:post][:body]
     if @post.save
 
-    flash[:notice] = "Post was saved."
-    redirect_to @post
-  else
+      flash[:notice] = "Post was saved."
+      redirect_to @post
+    else
 
-    flash[:error] = "There was an error saving the post. Please try again."
-    render :new
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :new
+    end
   end
-end
 
   def edit
   end
 
-end
-end
 end
