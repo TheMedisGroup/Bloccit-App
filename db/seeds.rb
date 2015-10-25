@@ -1,5 +1,14 @@
 include RandomData
 
+25.times do
+  SponsoredPost.create!(
+  title: RandomData.random_sentence,
+  body:  RandomData.random_sentence,
+  price: 10000
+  )
+end
+sponsered_post = SponsoredPost.all
+
 15.times do
   Topic.create!(
     name: RandomData.random_sentence,
