@@ -18,6 +18,7 @@ class AdvertisementsController < ApplicationController
     @advertisement.price = params[:advertisement][:price]
     if @advertisement.save
       flash[:notice] = "Advertisement was saved."
+      redirect_to @advertisement
     else
       flash[:error] = "There was an error saving the advertisement. Please try again."
       render :new
