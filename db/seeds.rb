@@ -7,7 +7,7 @@ include RandomData
   price: 10000
   )
 end
-sponsered_post = SponsoredPost.all
+sponsored_post = SponsoredPost.all
 
 15.times do
   Topic.create!(
@@ -39,3 +39,4 @@ puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{SponsoredPost.count} sponsored posts created"
