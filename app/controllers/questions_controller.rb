@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
+    @questions = Question.count
+    puts @question
   end
 
   def show
@@ -38,9 +40,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+
+    if @question.destroy
+      flash[:notice] = "\"#{Question.title}\" was deleted successfully."
+      redirect_to questions_path
+    else
+      flash[:error] = "There was an error deleting the question."
+      render :show
+    end
+  end
+end
+
   private
 
   def question_params
     params.require(:question).permit(:title, :body, :resolved)
   end
-end
