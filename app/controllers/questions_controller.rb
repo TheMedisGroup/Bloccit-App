@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params.require(:question).permit(:title, :body, :resolved))
+    @question = Question.new(question_params)
 
     if @question.save
       flash[:notice] = "Question was saved."
@@ -29,12 +29,18 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update_attributes(params.require(:question).permit(:title, :body, :resolved, :_destroy))
+    if @question.update_attributes(question_params)
       flash[:noteice] = "Question was updated."
       redirect_to @question
     else
       flash[:error] = "There was an error saving the question. Please try again."
       render :edit
     end
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :body, :resolved)
   end
 end
