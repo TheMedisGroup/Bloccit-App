@@ -1,0 +1,19 @@
+<h5>You have been signed up!!!!!</h5>
+
+<div class="row">
+  <div class="col-md-4">
+    <h5>Are You sure about this? Once your in you can't come back out</h5>
+    <h6>Email: <% @user.email %></h6>
+    <h6>Name: <% @user.name %></h6>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= button_to "Yes", {:controller => "users", :action => "create", :params => params}, class: 'btn btn-success' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= button_to "No", {:controller => "users", :action => "new"}, class: 'btn btn-failure', :method => :get %>
+  </div>
+</div>
