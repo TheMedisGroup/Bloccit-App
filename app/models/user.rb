@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
-  before_save = :user_name
+  before_save :user_name
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
      if name
        user_array = []
        name.split.each do |part|
-         user_array << part.captailize
+         user_array << part.capitalize
        end
 
        self.name = user_array.join(" ")
