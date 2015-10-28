@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to Bloccit #{@user.name}"
       redirect_to root_path
     else
-      flash[:notice] = "There was an error creating your account! Plase try again."
+      flash[:notice] = "There was an error creating your account! Try again!!"
       render :new
     end
   end
