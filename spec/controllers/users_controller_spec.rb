@@ -9,7 +9,7 @@ RSpec.describe UsersController, type: :controller do
       password: "blochead",
       password_confirmation: "blochead"
     }
-  end
+
 
   describe "GET new" do
     it "returns http success" do
