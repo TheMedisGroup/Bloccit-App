@@ -62,7 +62,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     unless current_user == post.user || current_user.admin? || (current_user.moderator? && ["edit", "update"].include?(action_name))
       flash[:error] = "You must be an admin or moderator to do that."
-      redirect_to [@post.topic, @post]
+      redirect_to [post.topic, post]
     end
   end
 end
