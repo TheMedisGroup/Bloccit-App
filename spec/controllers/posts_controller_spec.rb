@@ -7,7 +7,7 @@ RSpec.describe PostsController, :type => :controller do
   let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
   let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
 
-  context "guest user" do
+context "guest user" do
 
     describe "GET show" do
       it "returns http success" do
@@ -36,7 +36,7 @@ RSpec.describe PostsController, :type => :controller do
     describe "POST create" do
       it "returns http redirect" do
         post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
-        expect(response).to redirect_to(new_session_path)        end
+        expect(response).to redirect_to(new_session_path)
       end
     end
 
@@ -65,10 +65,10 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
-  context "signed-in user" do
-    before do
-      create_session(my_user)
-    end
+context "signed-in user" do
+  before do
+    create_session(my_user)
+  end
 
     describe "GET show" do
       it "returns http success" do
@@ -177,3 +177,4 @@ RSpec.describe PostsController, :type => :controller do
         end
       end
     end
+  end
