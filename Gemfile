@@ -12,6 +12,7 @@ group :development do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
+  gem 'annotate'
 end
 
 group :development, :test do
