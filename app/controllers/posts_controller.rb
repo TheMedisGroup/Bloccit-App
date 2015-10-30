@@ -7,15 +7,14 @@ class PostsController < ApplicationController
      @post = Post.find(params[:id])
    end
 
-   def new
-     @topic = Topic.find(params[:topic_id])
-     @post = Post.new
-   end
+  def new
+    @post = Post.new
+  end
 
    def create
-     @topic = Topic.find(params[:topic_id])
-     @post = @topic.posts.build(post_params)
-     @post.user = current_user
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.build(post_params)
+    @post.user = current_user
      if @post.save
        flash[:notice] = "Post was saved."
        redirect_to [@topic, @post]
@@ -26,12 +25,12 @@ class PostsController < ApplicationController
    end
 
    def edit
-     @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
    end
 
    def update
-     @post = Post.find(params[:id])
-     @post.assign_attributes(post_params)
+    @post = Post.find(params[:id])
+    @post.assign_attributes(post_params)
      if @post.save
        flash[:notice] = "Post was updated."
        redirect_to [@post.topic, @post]
