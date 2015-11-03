@@ -7,6 +7,7 @@
   <div class="col-md-8">
     <p class="lead">
        <%= render partial: "labels/list", locals: { labels: @topic.labels } %>
+       <%= render partial: "rating/list", locals: { ratings: @topic.rating } %>
        <br />
        <%= @topic.description %>
      </p>
@@ -32,3 +33,5 @@
   </div>
   <% end %>
 </div>
+<br>
+<br>

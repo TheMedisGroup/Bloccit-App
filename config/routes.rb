@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :labels, only: [:show]
+  get 'ratings/show'
 
   resources :topics do
     resources :posts, except: [:index]
@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :advertisements
+  resources :questions
+
+  resources :labels, only: [:show]
 
   post 'users/confirm' => 'users#confirm'
   get 'about' => 'welcome#about'
