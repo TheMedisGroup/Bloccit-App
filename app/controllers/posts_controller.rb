@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @topic = Topic.find(params[:topic_id])
   end
 
    def create
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
        flash[:notice] = "Post was saved."
        redirect_to [@topic, @post]
      else
-       flash[:error] = "There was an error sving the post. Please try again."
+       flash[:error] = "There was an error saving the post. Please try again."
        render :new
      end
    end
