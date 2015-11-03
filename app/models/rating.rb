@@ -1,4 +1,6 @@
 class Rating < ActiveRecord::Base
+  belongs_to :rateable
+  
   enum severity: [ :G, :PG, :PG13, :R ]
 
   has_many :topics
