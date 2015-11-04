@@ -1,5 +1,4 @@
-class PostsController < ApplicationController
-
+class PostController < ApplicationController
   before_action :require_sign_in, except: :show
   before_action :authorize_user, except: [:show, :new, :create]
 
@@ -8,6 +7,7 @@ class PostsController < ApplicationController
    end
 
   def new
+    @topic = Topic.find(params[:id])
     @post = Post.new
   end
 

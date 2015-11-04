@@ -7,13 +7,14 @@
   <div class="col-md-8">
     <p class="lead">
        <%= render partial: "labels/list", locals: { labels: @topic.labels } %>
-       <br />
+       <br/>
        <%= @topic.description %>
      </p>
     <% @topic.posts.each do |post| %>
       <div class="media">
+        <%= render partial: 'votes/voter', locals: { post: post } %>
         <div class="media-body">
-          <h4 class="media-heading"
+          <h4 class="media-heading">
             <%= link_to post.title, topic_post_path(@topic, post) %>
             <%= render partial: "labels/list",locals: { labels: post.labels } %>
           </h4>
