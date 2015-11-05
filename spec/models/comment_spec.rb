@@ -13,11 +13,12 @@ require 'rails_helper'
 include RandomData
 RSpec.describe Comment, type: :model do
 
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
+  let(:comment) { create(:comment) }
+
   describe "attributes" do
-    let(:topic) { create(:topic) }
-    let(:user) { create(:user) }
-    let(:post) { create(:post) }
-    let(:comment) { create(:comment) }
 
     it { should belong_to(:post) }
     it { should belong_to(:user) }
