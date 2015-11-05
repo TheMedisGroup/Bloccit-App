@@ -28,16 +28,21 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_blank: true
 
   validates :email,
-             presence: true,
-             uniqueness: { case_sensitive: false },
-             length: { minimum: 3, maximum: 100 },
-             format: { with: EMAIL_REGEX }
+  presence: true,
+  uniqueness: { case_sensitive: false },
+  length: { minimum: 3, maximum: 100 },
+  format: { with: EMAIL_REGEX }
 
-   has_secure_password
+  has_secure_password
 
-   enum role: [:member, :moderator, :admin]
+  enum role: [:member, :moderator, :admin]
 
-   def favorite_for(post)
-     favorites.where(post_id: post.id).first
-   end
- end
+  def favorite_for(post)
+    favorites.where(post_id: post.id).first
+  end
+
+  def self.avatar_url(user, size)
+    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  end
+end
